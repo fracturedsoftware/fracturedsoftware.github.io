@@ -1,0 +1,32 @@
+# Site settings
+title: Website Title
+email: support@fracturedsoftware.com
+description: Website description
+favicon: favicon.ico
+destination: Built Website    # Folder where site will be built
+
+# Build settings
+# to add plugin: sudo gem install name-of-plugin
+# can add others, separated by comma eg, jekyll-paginate-v2
+plugins: [jekyll-email-protect, jekyll-sitemap]   
+
+sass:
+  style: expanded # possible values: nested expanded compact compressed
+
+collections:
+  software:
+    output: true
+
+# Exclude
+exclude: []
+
+include: []
+
+baseurl: ""
+url: "https://fracturedsoftware.github.io"   # the base hostname & protocol
+
+# Analytics
+analytics:
+  provider: false
+  google:
+    tracking_id :

@@ -1,0 +1,12 @@
+---
+# this ensures Jekyll reads the file to be transformed into CSS later
+# only Main files contain this front matter, not partials.
+---
+
+    @import "base";
+    @import "layout";
+    @import "multi-column-section.scss";
+    @import "typography.scss";
+    @import "navigation.scss";
+    @import "software-page-content";
+    @import "article+blog-content";

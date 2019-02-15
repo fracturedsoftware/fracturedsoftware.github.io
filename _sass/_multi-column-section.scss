@@ -1,0 +1,17 @@
+// This is a partial.
+
+#multi-column {
+    float: left;
+    display: flex;
+    width: 100%;
+}
+
+#leftPanel{
+    float: left;
+    width: 100%;   
+}
+
+#rightPanel {
+    float: left;
+    width: 100%;
+}

@@ -1,0 +1,44 @@
+// This is a partial.
+
+#logo-and-nav{
+    display: flex;
+    flex-direction: row;
+    flex-shrink: 0;
+    align-items: center;
+    width:100%;
+    height:50px;
+    border-bottom:1px solid $ruler-line-color;
+    padding-top:20px;
+}
+
+#logo {
+    flex-grow:1;
+}
+
+#logo a{
+    padding-left:0em;
+    text-decoration:none;
+    font-size: 26px;
+}
+
+#logo a:hover{
+    background-color: white;
+}
+
+span.heavy{
+    color: $charcoal;
+}
+
+span.light{
+    color: $nav-color;
+}
+
+#menu-item a{
+    padding-left:1em;
+    text-decoration:none;
+    color:$nav-color;
+}
+
+#menu-item a:hover{
+    background-color: white;
+}

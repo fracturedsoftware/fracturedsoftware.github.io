@@ -1,0 +1,58 @@
+// This is a partial.
+
+
+// Main Header
+#name-and-download{
+    display: flex;
+    flex-direction: row;
+    flex-shrink: 0;
+    align-items: center;
+    width:100%;
+    padding:25px 0px 20px 0px;
+}
+
+#name {
+    flex-grow:1;
+    font-size: 26px;
+    font-weight: 300;
+    color: $charcoal;
+}
+
+#download a{
+    text-decoration:none;
+    color: $charcoal;
+}
+
+#notice{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    width: 100%;
+    margin:-10px 0px 0px 0px;
+    padding:0px;
+  //  border: 1px solid $ruler-line-color;
+}
+
+// Main Image
+#image{
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    //border: 1px solid $ruler-line-color;
+
+}
+
+// Requirements
+#requirements{
+    display:flex;
+    flex-direction: column;
+    text-align: center;
+    flex-shrink: 0;
+    width:100%;
+}
+
+#requirements p{
+    margin:0px;
+    padding:0px;
+}
