@@ -1,0 +1,150 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>FracturedSoftware News</title>
+    <link rel="shortcut icon" type="image/png" href="/assets/favicon.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="
+    Website description">
+    <meta charset="utf-8">
+
+    <!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->
+    <script>window.ga = function () { ga.q.push(arguments) }; ga.q = []; ga.l = +new Date; ga('create', 'UA-XXXXX-Y', 'auto'); ga('send', 'pageview')
+    </script>
+    <script src="https://www.google-analytics.com/analytics.js" async defer></script>
+    <!-- Google Analytics -->
+    
+    <link rel="stylesheet" href="https://fracturedsoftware.github.io/assets/css/screen.css" type="text/css" />
+    
+</head>
+
+<body>
+    <div id="container">
+        
+  <nav id="logo-and-nav">
+    <div id="logo"><a href="https://fracturedsoftware.github.io/index.html">
+    <span class="heavy">fractured</span><span class="light">software</span></a></div>
+    <div id="menu-item"><a href="https://fracturedsoftware.github.io/index.html">MacSim</a></div>
+    <div id="menu-item"><a href="https://fracturedsoftware.github.io/pages/othersoftware.html">Other Software</a></div>
+    <div id="menu-item"><a href="https://fracturedsoftware.github.io/pages/resources.html">Resources</a></div>
+    <div id="menu-item"><a href="https://fracturedsoftware.github.io/pages/support.html">Support</a></div>
+    <div id="menu-item"><a href="https://fracturedsoftware.github.io/blog/blog.html">Blog</a></div>
+  </nav>
+
+
+        <div id="main">
+            
+    <div id="article-heading">
+        Running AVR Studio on a Mac
+    </div>
+    
+    <div id="blog-date">
+        25 May 2018
+    </div>
+    
+    <div>
+        <p>I recently had to reinstall Windows and AVR Studio after upgrading to MacOs High Sierra and the process wasn’t completely straight forward, so I thought I’d do a write up for my own reference and maybe help a few others. In the post I also explain why I chose AVR Studio 4 running on Windows 10, rather than a more recent version of AVR Studio. All in all AVR Studio 4 works quite well - for a Windows program - once you get it set up.</p>
+
+<p>The <a href="/articles/AVR_Studio_on_Mac.html">full post is here</a> but in short:</p>
+
+<ol>
+  <li>Download Virtualbox and the Virtualbox Guest Additions from Virtualbox.org</li>
+  <li>Install Virtualbox onto your Mac</li>
+  <li>Download and install Windows 10 within Virtualbox followed by the Virtualbox Guest
+Additions</li>
+  <li>Download and install AVRStudio 4.18 and its Service Pack from Microchip.com</li>
+  <li>Download and install WinAVR to get the GCC toolchain from Sourceforge</li>
+  <li>Replace a dll within the WinAVR utils\bin subdirectory with a modified dll available <a href="http://www.madwizard.org/download/electronics/msys-1.0-vista64.zip">here</a></li>
+</ol>
+
+<p>After that everything should work! Hope this helps a few of you out there.</p>
+
+<p><strong>UPDATE:</strong> The author of the replacement dll has allowed me to host his dll. Please visit his site first but if you can’t find it you can get a copy <a href="https://fracturedsoftware.github.io/assets/downloads/msys-1.0.dll.zip">here</a>.</p>
+
+
+    </div> 
+
+    <div id="article-heading">
+        Virtual Serial Port for OSX
+    </div>
+    
+    <div id="blog-date">
+        05 Sep 2017
+    </div>
+    
+    <div>
+        <p>While working on MacSim, my AVR simulator for OSX, I started thinking about how I might go about implementing a serial port peripheral so that the simulated AVR could communicate with the outside world. This turns out to be quite a difficult problem on OSX. However after quite a bit of trial and error I managed to get it at least partially working.</p>
+
+<p>Unfortunately there are no working examples available that I can find to see what might be preventing it fully working. All old examples from Apple are way out of date and don’t compile at all. I seem to have reached a point where it is a bit beyond me and have open sourced the project in the hope that someone might be able to figure out what is wrong. The project page is <a href="https://fracturedsoftware.github.io/articles/virtualserialport.html">here</a> and the source is hosted on <a href="https://github.com/fracturedsoftware/Virtual-Serial-Port-for-OSX">GitHub</a>.</p>
+
+
+    </div> 
+
+    <div id="article-heading">
+        Rondo Discontinued
+    </div>
+    
+    <div id="blog-date">
+        18 Nov 2016
+    </div>
+    
+    <div>
+        <p>After a successful run of over 10 years, our MIDI playing app Rondo, has been discontinued. It still works on recent operating systems but is getting really long in the tooth and is proving impossible to update. There are vague plans for a rewrite but it could be a while. Many thanks to all the people that purchased Rondo over the years.</p>
+
+<p>Rondo is still available for download from <a href="https://fracturedsoftware.github.io/software/rondo/rondo.html">here</a>.</p>
+
+<p>UPDATE May 2018: Rondo appears to work fine on all MacOS versions from at least 10.7 up to the current 10.13.4</p>
+
+
+    </div> 
+
+    <div id="article-heading">
+        New Update for MacSim
+    </div>
+    
+    <div id="blog-date">
+        26 Aug 2015
+    </div>
+    
+    <div>
+        <p>I am pleased to announce a new update to MacSim. It’s been a long time coming and it nearly didn’t happen, so I thought I’d explain what went wrong.</p>
+
+<p>While working on the previous version of MacSim I thought I’d take some time out to implement one of the peripherals - a timer - to see how it went and if I could integrate it into MacSim without too many changes. Things went pretty well for a while, but at some point before I’d got more than a few of the different timer modes ‘working’ it all started going south. Every time I modified one part of the timer in order to get it to work, other parts would start behaving incorrectly.</p>
+
+<p>I spent nearly 3 weeks running test programs on my simulator and comparing the results with AVR Studio. The results would often be identical for a while but then would begin to differ slightly, so I’d make a small change to the timer code to fix it but that would then cause other problems.At some point I more or less gave up, thinking that a microcontroller simulator without any peripherals wouldn’t be that useful and I didn’t feel like spending ages futzing about trying to make it work. So the project languished until…</p>
+
+<p>A few months ago while updating some projects that use a common framework I have been working on, I took another look at MacSim to see if it was worth updating to use the new framework. I’d really enjoyed working on it at the time ( apart from the last couple of weeks ) and it seemed a bit of a shame just to let it die. I was actually pretty close to getting the core working really well when I’d abandoned it and it would surely be moderately useful even without any peripherals. A few weeks work would get it up to date and hopefully I could then gradually add a few improvements that I had planned all along.</p>
+
+<p>I even started thinking that I’d probably been a bit too hard with the timer testing. I had written some rather pathological code - changing timer modes just as the timer hit top or bottom and things like that, so maybe if I stuck to more realistic testing things work work out better!</p>
+
+<p>So that is basically it. The simulator has been extensively updated and is working well and I am looking forward to implementing some improvements. There may be some incorrect instructions, so if you see any please let me know as they shouldn’t be too hard to fix.</p>
+
+    </div> 
+
+    <div id="article-heading">
+        Website Refresh
+    </div>
+    
+    <div id="blog-date">
+        25 Aug 2015
+    </div>
+    
+    <div>
+        <p>After quite a few years, it’s time for a refresh. The new website is a lot simpler and cleaner and should load much faster.</p>
+
+    </div> 
+ 
+        </div>
+        
+<div id="footer">
+    <p>&copy; 2006 - 
+    <script>new Date().getFullYear()>2010&&document.write(new Date().getFullYear());</script>
+    <span class="heavy">fractured</span><span class="light">software</span>. 
+    All rights reserved.<br>
+    <a href="https://fracturedsoftware.github.io/pages/support.html">Contact us</a> | 
+    <a href="https://fracturedsoftware.github.io/pages/support.html">Privacy Policy</a></p>
+</div>
+    </div>
+</body>
+</html>
