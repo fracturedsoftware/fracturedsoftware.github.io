@@ -1,1 +1,1 @@
-Sitemap: https://fracturedsoftware.github.io/sitemap.xml
+Sitemap: http://fracturedsoftware.github.io/sitemap.xml
