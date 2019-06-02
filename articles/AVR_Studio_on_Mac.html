@@ -18,20 +18,20 @@
     <meta name="description" content="
     MacSim - AVR Simulator for OSX">
     <meta charset="utf-8">  
-    <link rel="stylesheet" href="http://fracturedsoftware.github.io/assets/css/screen.css" type="text/css" />
+    <link rel="stylesheet" href="https://fracturedsoftware.github.io/assets/css/screen.css" type="text/css" />
 </head>
 
 <body>
     <div id="container">
         
   <nav id="logo-and-nav">
-    <div id="logo"><a href="http://fracturedsoftware.github.io/index.html">
+    <div id="logo"><a href="https://fracturedsoftware.github.io/index.html">
     <span class="heavy">fractured</span><span class="light">software</span></a></div>
-    <div id="menu-item"><a href="http://fracturedsoftware.github.io/index.html">MacSim</a></div>
-    <div id="menu-item"><a href="http://fracturedsoftware.github.io/pages/othersoftware.html">Other Software</a></div>
-    <div id="menu-item"><a href="http://fracturedsoftware.github.io/pages/resources.html">Resources</a></div>
-    <div id="menu-item"><a href="http://fracturedsoftware.github.io/pages/support.html">Support</a></div>
-    <div id="menu-item"><a href="http://fracturedsoftware.github.io/blog/blog.html">Blog</a></div>
+    <div id="menu-item"><a href="https://fracturedsoftware.github.io/index.html">MacSim</a></div>
+    <div id="menu-item"><a href="https://fracturedsoftware.github.io/pages/othersoftware.html">Other Software</a></div>
+    <div id="menu-item"><a href="https://fracturedsoftware.github.io/pages/resources.html">Resources</a></div>
+    <div id="menu-item"><a href="https://fracturedsoftware.github.io/pages/support.html">Support</a></div>
+    <div id="menu-item"><a href="https://fracturedsoftware.github.io/blog/blog.html">Blog</a></div>
   </nav>
 
 
@@ -46,13 +46,13 @@
 
 <h3 id="installing-virtualbox">Installing Virtualbox</h3>
 
-<p>First you need to download Virtualbox and the Virtualbox Guest Additions. There is also an extension pack available but I have never needed or used this. The download for Virtualbox is easy to find on the <a href="http://www.virtualbox.org">Virtualbox</a> website but the Guest Additions are a bit hidden away. Currently they can be found at <a href="http://download.virtualbox.org/virtualbox">http://download.virtualbox.org/virtualbox</a>. From here you have to navigate down the list to the latest stable release of Virtualbox (5.2.12 as of May 2018) and then look for VBoxGuestAdditions.iso within that directory.</p>
+<p>First you need to download Virtualbox and the Virtualbox Guest Additions. There is also an extension pack available but I have never needed or used this. The download for Virtualbox is easy to find on the <a href="https://www.virtualbox.org">Virtualbox</a> website but the Guest Additions are a bit hidden away. Currently they can be found at <a href="https://download.virtualbox.org/virtualbox">https://download.virtualbox.org/virtualbox</a>. From here you have to navigate down the list to the latest stable release of Virtualbox (5.2.12 as of May 2018) and then look for VBoxGuestAdditions.iso within that directory.</p>
 
 <p>After downloading these two files you can install Virtualbox, but not the guest additions, as they are installed once Windows 10 is up and running. When running Virtualbox for the first time I would definitely read the manual, particularly the first parts on how to instal Windows and set up the amount of memory to use etc. I would also set the memory and disk sizes to larger than the recommended minimum. You can apparently change these later but at least on an earlier version of Virtualbox I couldn’t and this is one of the reasons for completely reinstalling everything. I set my memory to 5GB (I have 12 GB of installed memory) and Hard Disk size to 50GB.</p>
 
 <h3 id="installing-windows-10-under-virtualbox">Installing Windows 10 under Virtualbox</h3>
 
-<p>This turned out to be fairly straight forward. I chose Windows 10 because it can be downloaded from Microsofts website without a product key and it can be installed and used without activation. There are only a few restrictions which aren’t much of a problem. The actual details of loading Windows 10 can be easily found, for example <a href="https://www.howtogeek.com/244678/you-dont-need-a-product-key-to-install-and-use-windows-10">here</a> so I won’t go into them in detail. Basically you need to download the Windows 10 .iso from <a href="https://www.microsoft.com/en-us/software-download/windows10ISO">microsoft</a> then start up Virtualbox and load the Windows .iso. This is explained in the section ‘Starting a new VM for the first time’ in the Virtualbox manual.</p>
+<p>This turned out to be fairly straight forward. I chose Windows 10 because it can be downloaded from Microsofts website without a product key and it can be installed and used without activation. There are only a few restrictions which aren’t much of a problem. The actual details of loading Windows 10 can be easily found, for example <a href="https://www.howtogeek.com/244678/you-dont-need-a-product-key-to-install-and-use-windows-10">here</a> so I won’t go into them in detail. Basically you need to download the Windows 10 .iso from <a href="https://www.microsoft.com/en-us/software-download/windows10ISO">Microsoft</a> then start up Virtualbox and load the Windows .iso. This is explained in the section ‘Starting a new VM for the first time’ in the Virtualbox manual.</p>
 
 <p>Once you have Windows 10 up and running you need to instal the Virtualbox Guest Additions, which among other things allows you to create a shared folder or two on the Mac host, making it easy to transfer files - such as AVR Studio - from your Mac to Windows, rather than downloading them via the internet under Windows 10. Downloading via Windows 10 is quite doable under Virtualbox but I have never set this up. I always just download on the Mac side and transfer to Windows via a shared folder.</p>
 
@@ -68,7 +68,7 @@
 
 <p>After you install AVR Studio and the Service Pack you would think that you are done but unfortunately not. If you try to create a project in Studio 4 and compile and run it you will discover that the compiler toolchain is missing. AVR Studio uses the GCC toolchain so you have to install this as well. I got the toolchain by Googling WinAVR which eventually led me to <a href="https://sourceforge.net/projects/winavr/files">this link</a>. Even though the toolchain looks old - the latest is from 2010 - it is still downloaded several thousand times a week so I downloaded the latest version and installed it. The toolchain is also available from Microchip from the same page where you downloaded AVR Studio 4 but I have no idea if they work or not with Studio 4.</p>
 
-<p>After installing the WinAVR toolchain you are nearly done. However if you compile and run a simple program you will still get a lot of errors. At this point I nearly gave up and just installed Studio 7, which presumably works fine on the latest Windows, but as I said before it seems to miss a lot of the functionality of Studio 4. Fortunately after some research I came across <a href="http://smallshire.org.uk/sufficientlysmall/?p=689&amp;preview=true">this post</a> (UPDATE: link seems to be broken) which if you read then scroll down to comment #7 will lead you to <a href="http://www.madwizard.org/download/electronics/msys-1.0-vista64.zip">download this file</a> which contains a modified .dll. The page explaining the root cause of the problem is at <a href="http://www.madwizard.org/electronics/articles/winavrvista">madwizard</a>. There is also an <a href="https://www.avrfreaks.net/forum/avr-gcc-dont-run-vista?name=PNphpBB2&amp;file=viewtopic&amp;t=44251">AVR Freaks topic on the same problem</a>, particularly from comment #32 onwards.</p>
+<p>After installing the WinAVR toolchain you are nearly done. However if you compile and run a simple program you will still get a lot of errors. At this point I nearly gave up and just installed Studio 7, which presumably works fine on the latest Windows, but as I said before it seems to miss a lot of the functionality of Studio 4. Fortunately after some research I came across <a href="https://smallshire.org.uk/sufficientlysmall/?p=689&amp;preview=true">this post</a> (UPDATE: link seems to be broken) which if you read then scroll down to comment #7 will lead you to <a href="https://www.madwizard.org/download/electronics/msys-1.0-vista64.zip">download this file</a> which contains a modified .dll. The page explaining the root cause of the problem is at <a href="https://www.madwizard.org/electronics/articles/winavrvista">madwizard</a>. There is also an <a href="https://www.avrfreaks.net/forum/avr-gcc-dont-run-vista?name=PNphpBB2&amp;file=viewtopic&amp;t=44251">AVR Freaks topic on the same problem</a>, particularly from comment #32 onwards.</p>
 
 <p>After downloading the dll you need to replace the existing msys-1.0.dll in the utils\bin subdirectory of your WinAVR directory. I just renamed the old dll to msys-1.0.dll.old1 as there was already an msys-1.0.dll.old in the directory! So it looks like that file has caused problems in the past!</p>
 
@@ -80,13 +80,13 @@
   <li>Download and install Windows 10 within Virtualbox followed by the Virtualbox Guest Additions</li>
   <li>Download and install AVRStudio 4.18 and its Service Pack from Microchip.com</li>
   <li>Download and install WinAVR to get the GCC toolchain from Sourceforge</li>
-  <li>Replace a dll within the WinAVR utils\bin subdirectory with a modified dll available <a href="http://www.madwizard.org/download/electronics/msys-1.0-vista64.zip">here</a></li>
+  <li>Replace a dll within the WinAVR utils\bin subdirectory with a modified dll available <a href="https://www.madwizard.org/download/electronics/msys-1.0-vista64.zip">here</a></li>
 </ol>
 
 <p>After that everything should work! Hope this helps a few of you out there.</p>
 
 <h3 id="update">UPDATE:</h3>
-<p>The author of the replacement dll has allowed me to host his dll. Please visit his site first but if you can’t find it you can get a copy <a href="http://fracturedsoftware.github.io/assets/downloads/msys-1.0.dll.zip">here</a>.</p>
+<p>The author of the replacement dll has allowed me to host his dll. Please visit his site first but if you can’t find it you can get a copy <a href="https://fracturedsoftware.github.io/assets/downloads/msys-1.0.dll.zip">here</a>.</p>
 
 
 
@@ -99,8 +99,8 @@
     <script>new Date().getFullYear()>2010&&document.write(new Date().getFullYear());</script>
     <span class="heavy">fractured</span><span class="light">software</span>. 
     All rights reserved.<br>
-    <a href="http://fracturedsoftware.github.io/pages/support.html">Contact us</a> | 
-    <a href="http://fracturedsoftware.github.io/pages/support.html">Privacy Policy</a></p>
+    <a href="https://fracturedsoftware.github.io/pages/support.html">Contact us</a> | 
+    <a href="https://fracturedsoftware.github.io/pages/support.html">Privacy Policy</a></p>
 </div>
     </div>
 </body>
