@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="Peter Zegelin" />
+    <meta name="generator" content="Ignite v0.7.0" />
+    <title>fracturedSoftware</title>
+    <link href="/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="/css/bootstrap-icons.min.css" rel="stylesheet" />
+    <link href="/css/ignite-core.css" rel="stylesheet" />
+    <link href="https://www.macsim.app/" rel="canonical" />
+    <script>(function() {
+    function getThemeIDs() {
+        const lightThemeID = getComputedStyle(document.documentElement)
+            .getPropertyValue('--light-theme-ID')
+            .trim();
+        const darkThemeID = getComputedStyle(document.documentElement)
+            .getPropertyValue('--dark-theme-ID')
+            .trim();
+        return { lightThemeID, darkThemeID };
+    }
+
+    function getThemePreference() {
+        const savedTheme = localStorage.getItem('current-theme');
+        if (savedTheme) return savedTheme;
+
+        const { lightThemeID, darkThemeID } = getThemeIDs();
+        // If both theme IDs are valid, use auto theme
+        if (lightThemeID && darkThemeID) return 'auto';
+
+        return lightThemeID || darkThemeID;
+    }
+
+    function applyTheme(themeID) {
+        const { lightThemeID, darkThemeID } = getThemeIDs();
+        const defaultLightTheme = lightThemeID || 'light';
+        const defaultDarkTheme = darkThemeID || 'dark';
+
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const actualThemeID = themeID === 'auto' ? (prefersDark ? defaultDarkTheme : defaultLightTheme) : themeID;
+        document.documentElement.setAttribute('data-ig-theme', actualThemeID);
+        const isDarkTheme = actualThemeID.endsWith('dark');
+        document.documentElement.setAttribute('data-bs-theme', isDarkTheme ? 'dark' : 'light');
+        document.documentElement.setAttribute('data-ig-auto-theme-enabled', themeID === 'auto' ? 'true' : 'false');
+    }
+
+    function applySyntaxTheme() {
+        const syntaxTheme = getComputedStyle(document.documentElement)
+            .getPropertyValue('--syntax-highlight-theme').trim().replace(/"/g, '');
+
+        if (!syntaxTheme) return;
+
+        document.querySelectorAll('link[data-highlight-theme]').forEach(link => {
+            link.setAttribute('disabled', 'disabled');
+        });
+
+        const themeLink = document.querySelector(`link[data-highlight-theme="${syntaxTheme}"]`);
+        if (themeLink) {
+            themeLink.removeAttribute('disabled');
+        }
+    }
+
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+        const currentTheme = getThemePreference();
+        if (currentTheme === 'auto') {
+            applyTheme('auto');
+            applySyntaxTheme();
+        }
+    });
+
+    const savedTheme = getThemePreference();
+    applyTheme(savedTheme);
+    applySyntaxTheme();
+})();
+</script>
+    <meta property="og:site_name" content="MacSim" />
+    <meta property="og:title" content="fracturedSoftware" />
+    <meta name="twitter:title" content="fracturedSoftware" />
+    <meta property="og:url" content="https://www.macsim.app/" />
+    <meta name="twitter:domain" content="macsim.app" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:dnt" content="on" />
+    <link href="/css/site.css" rel="stylesheet" />
+  </head>
+  <body class="container">
+    <div style="padding-left: 100px; padding-right: 100px">
+      <div class="d-flex justify-content-between align-items-center p-2" style="margin-top: 40px">
+        <a href="/" class="fs-2" style="font-weight: 200">fractured/software</a>
+        <div>
+          <a href="/" style="padding-right: 10px">MacSim</a>
+          <a href="/rondo" style="padding-right: 10px">Rondo</a>
+          <a href="/resources" style="padding-right: 10px">Resources</a>
+          <a href="/support" style="padding-right: 10px">Support</a>
+          <a href="/blog">Blog</a>
+        </div>
+      </div>
+      <hr />
+      <div class="ig-main-content">
+        <div class="d-flex justify-content-between align-items-center p-2">
+          <h3 style="font-weight: 200">MacSim - AVR Simulator for OSX</h3>
+          <p><a href="/downloads/macsim.zip">DOWNLOAD 0.7 FREE (2.1MB)</a></p>
+        </div>
+        <div class="text-center" style="padding-top: 15px; padding-bottom: 30px">
+          <img src="/images/macsim.jpg" alt="" class="img-fluid" />
+        </div>
+        <div>
+          <p>Welcome to MacSim - the Atmel AVR microcontroller simulator for OS X! With MacSim you can load an AVR hex file into a simulated tiny2313, tiny84 or mega328 AVR and watch your code execute. Step through the code one instruction at a time or set it to auto step and adjust the speed from slow to fast. Set code breakpoints to stop the processor and examine the AVR registers, I/O ports and RAM or set a watchpoint to stop the simulation whenever a memory location or register is accessed.</p>
+          <p><strong>IMPORTANT:</strong> MacSim is not yet at version 1.0 and may contain bugs in some of the instructions. Code that relies on timers, eeprom or other peripherals will not work correctly as these are not yet supported, however many small programs that use just the processor work great. MacSim comes with a built in collection of examples such as finding primes and string manipulation, to get you started.</p>
+        </div>
+        <p>FEATURES</p>
+        <div class="row justify-content-start row-cols-1 row-cols-md-2 g-3" style="margin-top: -40px; margin-bottom: -10px">
+          <div class="col align-self-start" style="padding-right: 50px">
+            <hr />
+            <p></p>
+            <ul>
+              <li><strong>Multiple Panels and Inspectors</strong><br />MacSim comes with 7 different panels that show different aspects of the simulator. The window layout can be extensively reconfigured to suit your work style.</li>
+              <li><strong>Processors supported</strong><br />MacSim currently supports the Atmel ATtiny2313, ATtiny84 and ATmega328 microcontrollers.</li>
+              <li><strong>Breakpoints</strong><br />Breakpoints can be added, removed or disabled at any time. The simulator will stop when a breakpoint is hit. Breakpoints can also be globally enabled or disabled.</li>
+            </ul>
+            <p></p>
+          </div>
+          <div class="col align-self-start" style="padding-left: 50px">
+            <hr />
+            <p></p>
+            <ul>
+              <li><strong>Watchpoints</strong><br />Watchpoints can be added, removed or disabled at any time and can be configured to stop the simulator on either a read or write to a memory location. Watchpoints can also be globally enabled or disabled.</li>
+              <li><strong>Run, step and speed control</strong><br />MacSim is fast! It can often run faster than the real device. Single stepping is also available.</li>
+              <li><strong>Enclosed Examples</strong><br />A selection of built-in examples lets you get started right away.</li>
+            </ul>
+            <p></p>
+          </div>
+        </div>
+        <hr />
+        <div class="d-flex justify-content-center ig-text-xSmall" style="margin-bottom: -15px">
+          <p style="font-weight: 700">Licence</p>
+          <p>&nbsp;- MacSim is currently free &nbsp;&nbsp;| &nbsp;&nbsp;</p>
+          <p style="font-weight: 700">Current Version</p>
+          <p>&nbsp;- 0.7 &nbsp;&nbsp;| &nbsp;&nbsp;</p>
+          <p style="font-weight: 700">System Requirements</p>
+          <p>&nbsp;- OSX 10.9+</p>
+        </div>
+      </div>
+      <div class="d-flex justify-content-center m-2 ig-text-xSmall">
+        <p>© 2015 - <span id="currentYear"></span> Macsim.app &nbsp;&nbsp;| &nbsp;&nbsp;</p>
+        <script>document.getElementById('currentYear').textContent = new Date().getFullYear();</script>
+        <p>Created in Swift with <a href="https://github.com/twostraws/Ignite">Ignite</a></p>
+        <p>&nbsp;&nbsp; | &nbsp;&nbsp; Source Code for this site is at <a href="https://github.com/nscalemodeller/nscalemodeller-website">GitHub </a></p>
+      </div>
+    </div>
+    <script src="/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/ignite-core.js"></script>
+  </body>
+</html>

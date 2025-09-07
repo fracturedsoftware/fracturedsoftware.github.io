@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="Peter Zegelin" />
+    <meta name="generator" content="Ignite v0.7.0" />
+    <title>fracturedSoftware</title>
+    <link href="/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="/css/bootstrap-icons.min.css" rel="stylesheet" />
+    <link href="/css/ignite-core.css" rel="stylesheet" />
+    <link href="https://www.macsim.app/rondo" rel="canonical" />
+    <script>(function() {
+    function getThemeIDs() {
+        const lightThemeID = getComputedStyle(document.documentElement)
+            .getPropertyValue('--light-theme-ID')
+            .trim();
+        const darkThemeID = getComputedStyle(document.documentElement)
+            .getPropertyValue('--dark-theme-ID')
+            .trim();
+        return { lightThemeID, darkThemeID };
+    }
+
+    function getThemePreference() {
+        const savedTheme = localStorage.getItem('current-theme');
+        if (savedTheme) return savedTheme;
+
+        const { lightThemeID, darkThemeID } = getThemeIDs();
+        // If both theme IDs are valid, use auto theme
+        if (lightThemeID && darkThemeID) return 'auto';
+
+        return lightThemeID || darkThemeID;
+    }
+
+    function applyTheme(themeID) {
+        const { lightThemeID, darkThemeID } = getThemeIDs();
+        const defaultLightTheme = lightThemeID || 'light';
+        const defaultDarkTheme = darkThemeID || 'dark';
+
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const actualThemeID = themeID === 'auto' ? (prefersDark ? defaultDarkTheme : defaultLightTheme) : themeID;
+        document.documentElement.setAttribute('data-ig-theme', actualThemeID);
+        const isDarkTheme = actualThemeID.endsWith('dark');
+        document.documentElement.setAttribute('data-bs-theme', isDarkTheme ? 'dark' : 'light');
+        document.documentElement.setAttribute('data-ig-auto-theme-enabled', themeID === 'auto' ? 'true' : 'false');
+    }
+
+    function applySyntaxTheme() {
+        const syntaxTheme = getComputedStyle(document.documentElement)
+            .getPropertyValue('--syntax-highlight-theme').trim().replace(/"/g, '');
+
+        if (!syntaxTheme) return;
+
+        document.querySelectorAll('link[data-highlight-theme]').forEach(link => {
+            link.setAttribute('disabled', 'disabled');
+        });
+
+        const themeLink = document.querySelector(`link[data-highlight-theme="${syntaxTheme}"]`);
+        if (themeLink) {
+            themeLink.removeAttribute('disabled');
+        }
+    }
+
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+        const currentTheme = getThemePreference();
+        if (currentTheme === 'auto') {
+            applyTheme('auto');
+            applySyntaxTheme();
+        }
+    });
+
+    const savedTheme = getThemePreference();
+    applyTheme(savedTheme);
+    applySyntaxTheme();
+})();
+</script>
+    <meta property="og:site_name" content="MacSim" />
+    <meta property="og:title" content="fracturedSoftware" />
+    <meta name="twitter:title" content="fracturedSoftware" />
+    <meta property="og:url" content="https://www.macsim.app/rondo" />
+    <meta name="twitter:domain" content="macsim.app" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:dnt" content="on" />
+    <link href="/css/site.css" rel="stylesheet" />
+  </head>
+  <body class="container">
+    <div style="padding-left: 100px; padding-right: 100px">
+      <div class="d-flex justify-content-between align-items-center p-2" style="margin-top: 40px">
+        <a href="/" class="fs-2" style="font-weight: 200">fractured/software</a>
+        <div>
+          <a href="/" style="padding-right: 10px">MacSim</a>
+          <a href="/rondo" style="padding-right: 10px">Rondo</a>
+          <a href="/resources" style="padding-right: 10px">Resources</a>
+          <a href="/support" style="padding-right: 10px">Support</a>
+          <a href="/blog">Blog</a>
+        </div>
+      </div>
+      <hr />
+      <div class="ig-main-content">
+        <div>
+          <div class="d-flex justify-content-between align-items-center p-2">
+            <h3 style="font-weight: 200">Rondo - MIDI for your Mac</h3>
+            <p><a href="/downloads/rondo.dmg">DOWNLOAD 3.1 FREE (7.7MB)</a></p>
+          </div>
+          <div class="text-center">
+            <p><strong>PLEASE NOTE</strong><br />Rondo is no longer being actively developed or supported and will not run on MacOS 10.15+.<br />This page will remain so that registered users can re-download the application.<br />Thank you for all your support.</p>
+            <p><strong>UPDATE: MARCH 2020</strong><br />A free license is now available to anyone who would like one. Please check the Resources page for details.</p>
+          </div>
+          <div class="text-center" style="padding-top: 15px; padding-bottom: 30px">
+            <img src="/images/rondo.jpg" alt="" class="img-fluid" />
+          </div>
+          <div>
+            <p>Rondo is a unique MIDI player designed to help you follow your music as it plays. Its vertical scrolling piano roll, horizontal live playing keyboard and visual track filtering help you focus on just part of the melody so you can study or play along.</p>
+            <p>If you are just looking for a great player for your MIDI files, Rondo can play through external devices for better sound and the built in library has unlimited playlists to help you organise your MIDI files.</p>
+            <p>Whether you use Rondo as a serious learning aid or just for fun, you will find its simple and uncluttered interface a delight to use yet powerful enough to get the most out of your music.</p>
+          </div>
+          <p>FEATURES</p>
+          <div class="row justify-content-start row-cols-1 row-cols-md-2 g-3" style="margin-top: -40px; margin-bottom: -10px">
+            <div class="col align-self-start" style="padding-right: 50px">
+              <hr />
+              <p class="feature-list"></p>
+              <ul>
+                <li><strong>Vertical Piano Roll = Horizontal Piano</strong><br />Just like it should be. Now you can follow the music without getting a crick in your neck.</li>
+                <li><strong>Movable Playhead</strong><br />Live playing keyboard located directly over the scrolling notes makes it very easy to see what notes are about to play.</li>
+                <li><strong>Visual Filtering</strong><br />Visually isolate a track without affecting the audio. Focus on just a part of the melody so that you can play along.</li>
+                <li><strong>Looping and Tempo Control</strong><br />Visually isolate a track without affecting the audio. Continuously loop a short section of music at tempos down to 2% of the original.</li>
+              </ul>
+              <p></p>
+            </div>
+            <div class="col align-self-start" style="padding-left: 50px">
+              <hr />
+              <p></p>
+              <ul>
+                <li><strong>Library and Playlists</strong><br />Gives you instant access to your files to play and organise as you wish. Create folders to any depth and use the search field to help you find specific files.</li>
+                <li><strong>External Device Support</strong><br />Play your Midi files through an external device for better sound.</li>
+                <li><strong>Exporting Options</strong><br />Export whole files, selections, or individual tracks. Rename and rearrange tracks. Convert between MIDI formats 0 and 1</li>
+                <li><strong>Display any type of MIDI Data</strong><br />The unique multi-column interface makes it easy to view any type of MIDI data.</li>
+              </ul>
+              <p></p>
+            </div>
+          </div>
+          <hr />
+          <div class="d-flex justify-content-center ig-text-xSmall" style="margin-bottom: -15px">
+            <p style="font-weight: 700">Licence</p>
+            <p>&nbsp;- Rondo is no longer being developed or supported &nbsp;&nbsp;| &nbsp;&nbsp;</p>
+            <p style="font-weight: 700">Current Version</p>
+            <p>&nbsp;- 3.1 &nbsp;&nbsp;| &nbsp;&nbsp;</p>
+            <p style="font-weight: 700">System Requirements</p>
+            <p>&nbsp;- OSX 10.9 - 10.14</p>
+          </div>
+        </div>
+      </div>
+      <div class="d-flex justify-content-center m-2 ig-text-xSmall">
+        <p>© 2015 - <span id="currentYear"></span> Macsim.app &nbsp;&nbsp;| &nbsp;&nbsp;</p>
+        <script>document.getElementById('currentYear').textContent = new Date().getFullYear();</script>
+        <p>Created in Swift with <a href="https://github.com/twostraws/Ignite">Ignite</a></p>
+        <p>&nbsp;&nbsp; | &nbsp;&nbsp; Source Code for this site is at <a href="https://github.com/nscalemodeller/nscalemodeller-website">GitHub </a></p>
+      </div>
+    </div>
+    <script src="/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/ignite-core.js"></script>
+  </body>
+</html>

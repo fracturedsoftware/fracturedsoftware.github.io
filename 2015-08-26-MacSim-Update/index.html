@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="I am pleased to announce a new update to MacSim. It’s been a long time coming and it nearly didn’t happen, so I thought I’d explain what went wrong." />
+    <meta name="author" content="Peter Zegelin" />
+    <meta name="generator" content="Ignite v0.7.0" />
+    <title>New Update for MacSim</title>
+    <link href="/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="/css/bootstrap-icons.min.css" rel="stylesheet" />
+    <link href="/css/ignite-core.css" rel="stylesheet" />
+    <link href="https://www.macsim.app/2015-08-26-MacSim-Update" rel="canonical" />
+    <script>(function() {
+    function getThemeIDs() {
+        const lightThemeID = getComputedStyle(document.documentElement)
+            .getPropertyValue('--light-theme-ID')
+            .trim();
+        const darkThemeID = getComputedStyle(document.documentElement)
+            .getPropertyValue('--dark-theme-ID')
+            .trim();
+        return { lightThemeID, darkThemeID };
+    }
+
+    function getThemePreference() {
+        const savedTheme = localStorage.getItem('current-theme');
+        if (savedTheme) return savedTheme;
+
+        const { lightThemeID, darkThemeID } = getThemeIDs();
+        // If both theme IDs are valid, use auto theme
+        if (lightThemeID && darkThemeID) return 'auto';
+
+        return lightThemeID || darkThemeID;
+    }
+
+    function applyTheme(themeID) {
+        const { lightThemeID, darkThemeID } = getThemeIDs();
+        const defaultLightTheme = lightThemeID || 'light';
+        const defaultDarkTheme = darkThemeID || 'dark';
+
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const actualThemeID = themeID === 'auto' ? (prefersDark ? defaultDarkTheme : defaultLightTheme) : themeID;
+        document.documentElement.setAttribute('data-ig-theme', actualThemeID);
+        const isDarkTheme = actualThemeID.endsWith('dark');
+        document.documentElement.setAttribute('data-bs-theme', isDarkTheme ? 'dark' : 'light');
+        document.documentElement.setAttribute('data-ig-auto-theme-enabled', themeID === 'auto' ? 'true' : 'false');
+    }
+
+    function applySyntaxTheme() {
+        const syntaxTheme = getComputedStyle(document.documentElement)
+            .getPropertyValue('--syntax-highlight-theme').trim().replace(/"/g, '');
+
+        if (!syntaxTheme) return;
+
+        document.querySelectorAll('link[data-highlight-theme]').forEach(link => {
+            link.setAttribute('disabled', 'disabled');
+        });
+
+        const themeLink = document.querySelector(`link[data-highlight-theme="${syntaxTheme}"]`);
+        if (themeLink) {
+            themeLink.removeAttribute('disabled');
+        }
+    }
+
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+        const currentTheme = getThemePreference();
+        if (currentTheme === 'auto') {
+            applyTheme('auto');
+            applySyntaxTheme();
+        }
+    });
+
+    const savedTheme = getThemePreference();
+    applyTheme(savedTheme);
+    applySyntaxTheme();
+})();
+</script>
+    <meta property="og:site_name" content="MacSim" />
+    <meta property="og:title" content="New Update for MacSim" />
+    <meta name="twitter:title" content="New Update for MacSim" />
+    <meta property="og:description" content="I am pleased to announce a new update to MacSim. It’s been a long time coming and it nearly didn’t happen, so I thought I’d explain what went wrong." />
+    <meta name="twitter:description" content="I am pleased to announce a new update to MacSim. It’s been a long time coming and it nearly didn’t happen, so I thought I’d explain what went wrong." />
+    <meta property="og:url" content="https://www.macsim.app/2015-08-26-MacSim-Update" />
+    <meta name="twitter:domain" content="macsim.app" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:dnt" content="on" />
+    <link href="/css/blog.css" rel="stylesheet" />
+  </head>
+  <body class="container">
+    <div style="padding-left: 100px; padding-right: 100px">
+      <div class="d-flex justify-content-between align-items-center p-2" style="margin-top: 40px">
+        <a href="/" class="fs-2" style="font-weight: 200">fractured/software</a>
+        <div>
+          <a href="/" style="padding-right: 10px">MacSim</a>
+          <a href="/rondo" style="padding-right: 10px">Rondo</a>
+          <a href="/resources" style="padding-right: 10px">Resources</a>
+          <a href="/support" style="padding-right: 10px">Support</a>
+          <a href="/blog">Blog</a>
+        </div>
+      </div>
+      <hr />
+      <div class="row justify-content-center g-3">
+        <div class="ig-main-content col-md-8 align-self-start">
+          <div class="d-flex justify-content-between align-items-center p-2">
+            <a href="/2016-11-18-Rondo%20Discontinued">Next Post</a>
+          </div>
+          <div style="margin-bottom: 20px; margin-top: 20px; margin-left: 10px">
+            <h3 style="font-weight: 200">New Update for MacSim</h3>
+            <h6></h6>
+            <p>26 Aug 2015</p>
+            <p></p>
+            <p>I am pleased to announce a new update to MacSim. It’s been a long time coming and it nearly didn’t happen, so I thought I’d explain what went wrong.</p>
+            <!--more--> 
+            <p>While working on the previous version of MacSim I thought I’d take some time out to implement one of the peripherals - a timer - to see how it went and if I could integrate it into MacSim without too many changes. Things went pretty well for a while, but at some point before I’d got more than a few of the different timer modes ‘working’ it all started going south. Every time I modified one part of the timer in order to get it to work, other parts would start behaving incorrectly.</p>
+            <p>I spent nearly 3 weeks running test programs on my simulator and comparing the results with AVR Studio. The results would often be identical for a while but then would begin to differ slightly, so I’d make a small change to the timer code to fix it but that would then cause other problems.At some point I more or less gave up, thinking that a microcontroller simulator without any peripherals wouldn’t be that useful and I didn’t feel like spending ages futzing about trying to make it work. So the project languished until…</p>
+            <p>A few months ago while updating some projects that use a common framework I have been working on, I took another look at MacSim to see if it was worth updating to use the new framework. I’d really enjoyed working on it at the time ( apart from the last couple of weeks ) and it seemed a bit of a shame just to let it die. I was actually pretty close to getting the core working really well when I’d abandoned it and it would surely be moderately useful even without any peripherals. A few weeks work would get it up to date and hopefully I could then gradually add a few improvements that I had planned all along.</p>
+            <p>I even started thinking that I’d probably been a bit too hard with the timer testing. I had written some rather pathological code - changing timer modes just as the timer hit top or bottom and things like that, so maybe if I stuck to more realistic testing things work work out better!</p>
+            <p>So that is basically it. The simulator has been extensively updated and is working well and I am looking forward to implementing some improvements. There may be some incorrect instructions, so if you see any please let me know as they shouldn’t be too hard to fix.</p>
+            <p></p>
+          </div>
+        </div>
+        <div class="col align-self-start">
+          <div class="card" style="margin-bottom: 20px">
+            <div class="card-header">
+              Pages
+            </div>
+            <div class="card-body">
+              <ul class="mb-0" style="list-style: none">
+                <li><a href="/blog" class="m-0">Home</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="card" style="margin-bottom: 20px">
+            <div class="card-header">
+              Top Posts
+            </div>
+            <div class="card-body">
+              <ul class="mb-0" style="list-style: none">
+                <li><a href="/2020-03-20-Free%20Rondo%20License">Free Rondo Licence</a></li>
+                <li><a href="/2016-11-18-Rondo%20Discontinued">Rondo Discontinued</a></li>
+                <li><a href="/2015-08-26-MacSim-Update">New Update for MacSim</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="card" style="margin-bottom: 20px">
+            <div class="card-header">
+              Recent Posts
+            </div>
+            <div class="card-body">
+              <ul class="mb-0" style="list-style: none">
+                <li><a href="/2020-03-20-Free%20Rondo%20License">Free Rondo Licence</a></li>
+                <li><a href="/2016-11-18-Rondo%20Discontinued">Rondo Discontinued</a></li>
+                <li><a href="/2015-08-26-MacSim-Update">New Update for MacSim</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="d-flex justify-content-center m-2 ig-text-xSmall">
+        <p>© 2015 - <span id="currentYear"></span> Macsim.app &nbsp;&nbsp;| &nbsp;&nbsp;</p>
+        <script>document.getElementById('currentYear').textContent = new Date().getFullYear();</script>
+        <p>Created in Swift with <a href="https://github.com/twostraws/Ignite">Ignite</a></p>
+        <p>&nbsp;&nbsp; | &nbsp;&nbsp; Source Code for this site is at <a href="https://github.com/nscalemodeller/nscalemodeller-website">GitHub </a></p>
+      </div>
+    </div>
+    <script src="/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/ignite-core.js"></script>
+  </body>
+</html>

@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="Peter Zegelin" />
+    <meta name="generator" content="Ignite v0.7.0" />
+    <title>N Scale Modeller</title>
+    <link href="/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="/css/bootstrap-icons.min.css" rel="stylesheet" />
+    <link href="/css/ignite-core.css" rel="stylesheet" />
+    <link href="https://www.macsim.app/blog" rel="canonical" />
+    <script>(function() {
+    function getThemeIDs() {
+        const lightThemeID = getComputedStyle(document.documentElement)
+            .getPropertyValue('--light-theme-ID')
+            .trim();
+        const darkThemeID = getComputedStyle(document.documentElement)
+            .getPropertyValue('--dark-theme-ID')
+            .trim();
+        return { lightThemeID, darkThemeID };
+    }
+
+    function getThemePreference() {
+        const savedTheme = localStorage.getItem('current-theme');
+        if (savedTheme) return savedTheme;
+
+        const { lightThemeID, darkThemeID } = getThemeIDs();
+        // If both theme IDs are valid, use auto theme
+        if (lightThemeID && darkThemeID) return 'auto';
+
+        return lightThemeID || darkThemeID;
+    }
+
+    function applyTheme(themeID) {
+        const { lightThemeID, darkThemeID } = getThemeIDs();
+        const defaultLightTheme = lightThemeID || 'light';
+        const defaultDarkTheme = darkThemeID || 'dark';
+
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const actualThemeID = themeID === 'auto' ? (prefersDark ? defaultDarkTheme : defaultLightTheme) : themeID;
+        document.documentElement.setAttribute('data-ig-theme', actualThemeID);
+        const isDarkTheme = actualThemeID.endsWith('dark');
+        document.documentElement.setAttribute('data-bs-theme', isDarkTheme ? 'dark' : 'light');
+        document.documentElement.setAttribute('data-ig-auto-theme-enabled', themeID === 'auto' ? 'true' : 'false');
+    }
+
+    function applySyntaxTheme() {
+        const syntaxTheme = getComputedStyle(document.documentElement)
+            .getPropertyValue('--syntax-highlight-theme').trim().replace(/"/g, '');
+
+        if (!syntaxTheme) return;
+
+        document.querySelectorAll('link[data-highlight-theme]').forEach(link => {
+            link.setAttribute('disabled', 'disabled');
+        });
+
+        const themeLink = document.querySelector(`link[data-highlight-theme="${syntaxTheme}"]`);
+        if (themeLink) {
+            themeLink.removeAttribute('disabled');
+        }
+    }
+
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+        const currentTheme = getThemePreference();
+        if (currentTheme === 'auto') {
+            applyTheme('auto');
+            applySyntaxTheme();
+        }
+    });
+
+    const savedTheme = getThemePreference();
+    applyTheme(savedTheme);
+    applySyntaxTheme();
+})();
+</script>
+    <meta property="og:site_name" content="MacSim" />
+    <meta property="og:title" content="N Scale Modeller" />
+    <meta name="twitter:title" content="N Scale Modeller" />
+    <meta property="og:url" content="https://www.macsim.app/blog" />
+    <meta name="twitter:domain" content="macsim.app" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:dnt" content="on" />
+    <link href="/css/blog.css" rel="stylesheet" />
+  </head>
+  <body class="container">
+    <div style="padding-left: 100px; padding-right: 100px">
+      <div class="d-flex justify-content-between align-items-center p-2" style="margin-top: 40px">
+        <a href="/" class="fs-2" style="font-weight: 200">fractured/software</a>
+        <div>
+          <a href="/" style="padding-right: 10px">MacSim</a>
+          <a href="/rondo" style="padding-right: 10px">Rondo</a>
+          <a href="/resources" style="padding-right: 10px">Resources</a>
+          <a href="/support" style="padding-right: 10px">Support</a>
+          <a href="/blog">Blog</a>
+        </div>
+      </div>
+      <hr />
+      <div class="row justify-content-center g-3">
+        <div class="ig-main-content col-md-8 align-self-start">
+          <ul style="margin-left: -32px">
+            <div class="card" style="margin-bottom: 20px">
+              <div class="card-header">
+                <a href="/2020-03-20-Free%20Rondo%20License" class="fs-4">Free Rondo Licence</a>
+                <p class="mb-0" style="color: rgb(169 169 169 / 100%); font-weight: 200">20 Mar 2020</p>
+              </div>
+              <div class="card-body">
+                <p class="mb-0 card-text"></p>
+                <p>Since Rondo won’t work on the latest MacOS ‘Catalina’ and I haven’t sold licenses for a number of years now, I have made a free license available to anybody who would like one.</p>
+                <p></p>
+                <p class="text-end mb-0 card-text"><a href="/2020-03-20-Free%20Rondo%20License">more</a></p>
+              </div>
+            </div>
+            <div class="card" style="margin-bottom: 20px">
+              <div class="card-header">
+                <a href="/2016-11-18-Rondo%20Discontinued" class="fs-4">Rondo Discontinued</a>
+                <p class="mb-0" style="color: rgb(169 169 169 / 100%); font-weight: 200">18 Nov 2016</p>
+              </div>
+              <div class="card-body">
+                <p class="mb-0 card-text"></p>
+                <p>After a successful run of over 10 years, our MIDI playing app Rondo, has been discontinued. It still works on recent operating systems but is getting really long in the tooth and is proving impossible to update. There are vague plans for a rewrite but it could be a while. Many thanks to all the people that purchased Rondo over the years.</p>
+                <p>Rondo is still available for download from <a href="/rondo/">here</a>.</p>
+                <p></p>
+                <p class="text-end mb-0 card-text"><a href="/2016-11-18-Rondo%20Discontinued">more</a></p>
+              </div>
+            </div>
+            <div class="card" style="margin-bottom: 20px">
+              <div class="card-header">
+                <a href="/2015-08-26-MacSim-Update" class="fs-4">New Update for MacSim</a>
+                <p class="mb-0" style="color: rgb(169 169 169 / 100%); font-weight: 200">26 Aug 2015</p>
+              </div>
+              <div class="card-body">
+                <p class="mb-0 card-text"></p>
+                <p>I am pleased to announce a new update to MacSim. It’s been a long time coming and it nearly didn’t happen, so I thought I’d explain what went wrong.</p>
+                <p></p>
+                <p class="text-end mb-0 card-text"><a href="/2015-08-26-MacSim-Update">more</a></p>
+              </div>
+            </div>
+          </ul>
+        </div>
+        <div class="col align-self-start">
+          <div class="card" style="margin-bottom: 20px">
+            <div class="card-header">
+              Pages
+            </div>
+            <div class="card-body">
+              <ul class="mb-0" style="list-style: none">
+                <li><a href="/blog" class="m-0">Home</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="card" style="margin-bottom: 20px">
+            <div class="card-header">
+              Top Posts
+            </div>
+            <div class="card-body">
+              <ul class="mb-0" style="list-style: none">
+                <li><a href="/2020-03-20-Free%20Rondo%20License">Free Rondo Licence</a></li>
+                <li><a href="/2016-11-18-Rondo%20Discontinued">Rondo Discontinued</a></li>
+                <li><a href="/2015-08-26-MacSim-Update">New Update for MacSim</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="card" style="margin-bottom: 20px">
+            <div class="card-header">
+              Recent Posts
+            </div>
+            <div class="card-body">
+              <ul class="mb-0" style="list-style: none">
+                <li><a href="/2020-03-20-Free%20Rondo%20License">Free Rondo Licence</a></li>
+                <li><a href="/2016-11-18-Rondo%20Discontinued">Rondo Discontinued</a></li>
+                <li><a href="/2015-08-26-MacSim-Update">New Update for MacSim</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="d-flex justify-content-center m-2 ig-text-xSmall">
+        <p>© 2015 - <span id="currentYear"></span> Macsim.app &nbsp;&nbsp;| &nbsp;&nbsp;</p>
+        <script>document.getElementById('currentYear').textContent = new Date().getFullYear();</script>
+        <p>Created in Swift with <a href="https://github.com/twostraws/Ignite">Ignite</a></p>
+        <p>&nbsp;&nbsp; | &nbsp;&nbsp; Source Code for this site is at <a href="https://github.com/nscalemodeller/nscalemodeller-website">GitHub </a></p>
+      </div>
+    </div>
+    <script src="/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/ignite-core.js"></script>
+  </body>
+</html>

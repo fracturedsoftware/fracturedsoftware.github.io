@@ -1,0 +1,21 @@
+
+html, body{
+    font-family: 'Helvetica Neue', arial, sans-serif;
+    font-weight: 300;
+}
+
+li {
+  list-style-type: none; /* Removes bullets */
+  margin-left: -30px;
+}
+
+a{
+  color: lightblue;
+  text-decoration: none;
+}
+
+em{
+    font-size: 0.9em;
+}
+
+
