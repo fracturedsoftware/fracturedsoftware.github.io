@@ -328,179 +328,6 @@ code, pre {
 
 
 :root {
-    --light-theme-ID: light;
-}
-
-:root {
-    --dark-theme-ID: dark;
-}
-
-[data-ig-theme="light"] {
-    --bs-primary: rgb(13 110 253 / 100%);
-    --bs-primary-rgb: 13, 110, 253;
-    --bs-primary-text-emphasis: rgb(5 44 101 / 100%);
-    --bs-primary-bg-subtle: rgb(206 226 254 / 100%);
-    --bs-primary-border-subtle: rgb(109 168 253 / 100%);
-    --bs-secondary: rgb(108 117 125 / 100%);
-    --bs-secondary-rgb: 108, 117, 125;
-    --bs-secondary-text-emphasis: rgb(43 46 50 / 100%);
-    --bs-secondary-bg-subtle: rgb(225 227 229 / 100%);
-    --bs-secondary-border-subtle: rgb(166 172 177 / 100%);
-    --bs-success: rgb(25 135 84 / 100%);
-    --bs-success-rgb: 25, 135, 84;
-    --bs-success-text-emphasis: rgb(10 54 33 / 100%);
-    --bs-success-bg-subtle: rgb(209 231 220 / 100%);
-    --bs-success-border-subtle: rgb(117 183 152 / 100%);
-    --bs-info: rgb(13 202 240 / 100%);
-    --bs-info-rgb: 13, 202, 240;
-    --bs-info-text-emphasis: rgb(5 80 96 / 100%);
-    --bs-info-bg-subtle: rgb(206 244 252 / 100%);
-    --bs-info-border-subtle: rgb(109 223 246 / 100%);
-    --bs-warning: rgb(255 193 7 / 100%);
-    --bs-warning-rgb: 255, 193, 7;
-    --bs-warning-text-emphasis: rgb(102 77 2 / 100%);
-    --bs-warning-bg-subtle: rgb(255 242 205 / 100%);
-    --bs-warning-border-subtle: rgb(255 217 106 / 100%);
-    --bs-danger: rgb(220 53 69 / 100%);
-    --bs-danger-rgb: 220, 53, 69;
-    --bs-danger-text-emphasis: rgb(88 21 27 / 100%);
-    --bs-danger-bg-subtle: rgb(248 214 217 / 100%);
-    --bs-danger-border-subtle: rgb(234 133 143 / 100%);
-    --bs-light: rgb(248 249 250 / 100%);
-    --bs-light-rgb: 248, 249, 250;
-    --bs-light-text-emphasis: rgb(49 49 49 / 100%);
-    --bs-light-bg-subtle: rgb(253 253 254 / 100%);
-    --bs-light-border-subtle: rgb(198 199 200 / 100%);
-    --bs-dark: rgb(33 37 41 / 100%);
-    --bs-dark-rgb: 33, 37, 41;
-    --bs-dark-text-emphasis: rgb(13 14 16 / 100%);
-    --bs-dark-bg-subtle: rgb(210 211 212 / 100%);
-    --bs-dark-border-subtle: rgb(121 124 126 / 100%);
-    --bs-body-color: rgb(33 37 41 / 100%);
-    --bs-body-color-rgb: 33, 37, 41;
-    --bs-body-bg: rgb(255 255 255 / 100%);
-    --bs-body-bg-rgb: 255, 255, 255;
-    --bs-emphasis-color-rgb: 0, 0, 0;
-    --bs-secondary-color: rgb(8415 9435 10455 / 75%);
-    --bs-secondary-color-rgb: 8415, 9435, 10455;
-    --bs-tertiary-color: rgb(8415 9435 10455 / 50%);
-    --bs-tertiary-color-rgb: 8415, 9435, 10455;
-    --bs-secondary-bg: rgb(233 236 239 / 100%);
-    --bs-secondary-bg-rgb: 233, 236, 239;
-    --bs-tertiary-bg: rgb(248 249 250 / 100%);
-    --bs-tertiary-bg-rgb: 248, 249, 250;
-    --bs-link-color: rgb(13 110 253 / 100%);
-    --bs-link-color-rgb: 13, 110, 253;
-    --bs-link-hover-color: rgb(10 88 202 / 100%);
-    --bs-link-hover-color-rgb: 10, 88, 202;
-    --bs-border-color: rgb(222 226 230 / 100%);
-    --bs-border-color-rgb: 222, 226, 230;
-    --syntax-highlight-theme: "xcode-light";
-}
-
-@media (min-width: 540px) {
-    [data-ig-theme="light"].container {
-    max-width: 540px;
-}
-}
-
-@media (min-width: 720px) {
-    [data-ig-theme="light"].container {
-    max-width: 720px;
-}
-}
-
-@media (min-width: 960px) {
-    [data-ig-theme="light"].container {
-    max-width: 960px;
-}
-}
-
-@media (min-width: 1140px) {
-    [data-ig-theme="light"].container {
-    max-width: 1140px;
-}
-}
-
-@media (min-width: 1320px) {
-    [data-ig-theme="light"].container {
-    max-width: 1320px;
-}
-}
-
-[data-ig-theme="light"].btn-primary, .btn-primary[data-ig-theme="light"] {
-    --bs-btn-bg: rgb(13 110 253 / 100%);
-    --bs-btn-border-color: rgb(13 110 253 / 100%);
-    --bs-btn-hover-border-color: rgb(10 88 202 / 100%);
-    --bs-btn-hover-bg: rgb(10 88 202 / 100%);
-    --bs-btn-active-bg: rgb(7 66 151 / 100%);
-    --bs-btn-active-border-color: rgb(7 66 151 / 100%);
-}
-
-[data-ig-theme="light"].btn-secondary, .btn-secondary[data-ig-theme="light"] {
-    --bs-btn-bg: rgb(108 117 125 / 100%);
-    --bs-btn-border-color: rgb(108 117 125 / 100%);
-    --bs-btn-hover-border-color: rgb(86 93 100 / 100%);
-    --bs-btn-hover-bg: rgb(86 93 100 / 100%);
-    --bs-btn-active-bg: rgb(64 70 75 / 100%);
-    --bs-btn-active-border-color: rgb(64 70 75 / 100%);
-}
-
-[data-ig-theme="light"].btn-success, .btn-success[data-ig-theme="light"] {
-    --bs-btn-bg: rgb(25 135 84 / 100%);
-    --bs-btn-border-color: rgb(25 135 84 / 100%);
-    --bs-btn-hover-border-color: rgb(20 108 67 / 100%);
-    --bs-btn-hover-bg: rgb(20 108 67 / 100%);
-    --bs-btn-active-bg: rgb(15 81 50 / 100%);
-    --bs-btn-active-border-color: rgb(15 81 50 / 100%);
-}
-
-[data-ig-theme="light"].btn-info, .btn-info[data-ig-theme="light"] {
-    --bs-btn-bg: rgb(13 202 240 / 100%);
-    --bs-btn-border-color: rgb(13 202 240 / 100%);
-    --bs-btn-hover-border-color: rgb(10 161 192 / 100%);
-    --bs-btn-hover-bg: rgb(10 161 192 / 100%);
-    --bs-btn-active-bg: rgb(7 121 144 / 100%);
-    --bs-btn-active-border-color: rgb(7 121 144 / 100%);
-}
-
-[data-ig-theme="light"].btn-warning, .btn-warning[data-ig-theme="light"] {
-    --bs-btn-bg: rgb(255 193 7 / 100%);
-    --bs-btn-border-color: rgb(255 193 7 / 100%);
-    --bs-btn-hover-border-color: rgb(204 154 5 / 100%);
-    --bs-btn-hover-bg: rgb(204 154 5 / 100%);
-    --bs-btn-active-bg: rgb(153 115 4 / 100%);
-    --bs-btn-active-border-color: rgb(153 115 4 / 100%);
-}
-
-[data-ig-theme="light"].btn-danger, .btn-danger[data-ig-theme="light"] {
-    --bs-btn-bg: rgb(220 53 69 / 100%);
-    --bs-btn-border-color: rgb(220 53 69 / 100%);
-    --bs-btn-hover-border-color: rgb(176 42 55 / 100%);
-    --bs-btn-hover-bg: rgb(176 42 55 / 100%);
-    --bs-btn-active-bg: rgb(132 31 41 / 100%);
-    --bs-btn-active-border-color: rgb(132 31 41 / 100%);
-}
-
-[data-ig-theme="light"].btn-light, .btn-light[data-ig-theme="light"] {
-    --bs-btn-bg: rgb(248 249 250 / 100%);
-    --bs-btn-border-color: rgb(248 249 250 / 100%);
-    --bs-btn-hover-border-color: rgb(198 199 200 / 100%);
-    --bs-btn-hover-bg: rgb(198 199 200 / 100%);
-    --bs-btn-active-bg: rgb(148 149 150 / 100%);
-    --bs-btn-active-border-color: rgb(148 149 150 / 100%);
-}
-
-[data-ig-theme="light"].btn-dark, .btn-dark[data-ig-theme="light"] {
-    --bs-btn-bg: rgb(33 37 41 / 100%);
-    --bs-btn-border-color: rgb(33 37 41 / 100%);
-    --bs-btn-hover-border-color: rgb(26 29 32 / 100%);
-    --bs-btn-hover-bg: rgb(26 29 32 / 100%);
-    --bs-btn-active-bg: rgb(19 22 24 / 100%);
-    --bs-btn-active-border-color: rgb(19 22 24 / 100%);
-}
-
-[data-ig-theme="dark"] {
     --bs-primary: rgb(13 110 253 / 100%);
     --bs-primary-rgb: 13, 110, 253;
     --bs-primary-text-emphasis: rgb(109 168 253 / 100%);
@@ -565,36 +392,36 @@ code, pre {
 }
 
 @media (min-width: 540px) {
-    [data-ig-theme="dark"].container {
+    .container {
     max-width: 540px;
 }
 }
 
 @media (min-width: 720px) {
-    [data-ig-theme="dark"].container {
+    .container {
     max-width: 720px;
 }
 }
 
 @media (min-width: 960px) {
-    [data-ig-theme="dark"].container {
+    .container {
     max-width: 960px;
 }
 }
 
 @media (min-width: 1140px) {
-    [data-ig-theme="dark"].container {
+    .container {
     max-width: 1140px;
 }
 }
 
 @media (min-width: 1320px) {
-    [data-ig-theme="dark"].container {
+    .container {
     max-width: 1320px;
 }
 }
 
-[data-ig-theme="dark"].btn-primary, .btn-primary[data-ig-theme="dark"] {
+.btn-primary {
     --bs-btn-bg: rgb(13 110 253 / 100%);
     --bs-btn-border-color: rgb(13 110 253 / 100%);
     --bs-btn-hover-border-color: rgb(10 88 202 / 100%);
@@ -603,7 +430,7 @@ code, pre {
     --bs-btn-active-border-color: rgb(7 66 151 / 100%);
 }
 
-[data-ig-theme="dark"].btn-secondary, .btn-secondary[data-ig-theme="dark"] {
+.btn-secondary {
     --bs-btn-bg: rgb(108 117 125 / 100%);
     --bs-btn-border-color: rgb(108 117 125 / 100%);
     --bs-btn-hover-border-color: rgb(86 93 100 / 100%);
@@ -612,7 +439,7 @@ code, pre {
     --bs-btn-active-border-color: rgb(64 70 75 / 100%);
 }
 
-[data-ig-theme="dark"].btn-success, .btn-success[data-ig-theme="dark"] {
+.btn-success {
     --bs-btn-bg: rgb(25 135 84 / 100%);
     --bs-btn-border-color: rgb(25 135 84 / 100%);
     --bs-btn-hover-border-color: rgb(20 108 67 / 100%);
@@ -621,7 +448,7 @@ code, pre {
     --bs-btn-active-border-color: rgb(15 81 50 / 100%);
 }
 
-[data-ig-theme="dark"].btn-info, .btn-info[data-ig-theme="dark"] {
+.btn-info {
     --bs-btn-bg: rgb(13 202 240 / 100%);
     --bs-btn-border-color: rgb(13 202 240 / 100%);
     --bs-btn-hover-border-color: rgb(10 161 192 / 100%);
@@ -630,7 +457,7 @@ code, pre {
     --bs-btn-active-border-color: rgb(7 121 144 / 100%);
 }
 
-[data-ig-theme="dark"].btn-warning, .btn-warning[data-ig-theme="dark"] {
+.btn-warning {
     --bs-btn-bg: rgb(255 193 7 / 100%);
     --bs-btn-border-color: rgb(255 193 7 / 100%);
     --bs-btn-hover-border-color: rgb(204 154 5 / 100%);
@@ -639,7 +466,7 @@ code, pre {
     --bs-btn-active-border-color: rgb(153 115 4 / 100%);
 }
 
-[data-ig-theme="dark"].btn-danger, .btn-danger[data-ig-theme="dark"] {
+.btn-danger {
     --bs-btn-bg: rgb(220 53 69 / 100%);
     --bs-btn-border-color: rgb(220 53 69 / 100%);
     --bs-btn-hover-border-color: rgb(176 42 55 / 100%);
@@ -648,7 +475,7 @@ code, pre {
     --bs-btn-active-border-color: rgb(132 31 41 / 100%);
 }
 
-[data-ig-theme="dark"].btn-light, .btn-light[data-ig-theme="dark"] {
+.btn-light {
     --bs-btn-bg: rgb(248 249 250 / 100%);
     --bs-btn-border-color: rgb(248 249 250 / 100%);
     --bs-btn-hover-border-color: rgb(198 199 200 / 100%);
@@ -657,7 +484,7 @@ code, pre {
     --bs-btn-active-border-color: rgb(148 149 150 / 100%);
 }
 
-[data-ig-theme="dark"].btn-dark, .btn-dark[data-ig-theme="dark"] {
+.btn-dark {
     --bs-btn-bg: rgb(33 37 41 / 100%);
     --bs-btn-border-color: rgb(33 37 41 / 100%);
     --bs-btn-hover-border-color: rgb(26 29 32 / 100%);
